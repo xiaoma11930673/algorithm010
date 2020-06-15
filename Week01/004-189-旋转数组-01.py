@@ -1,13 +1,12 @@
 class Solution:
-    # 方法一：通过三次旋转实现。首先旋转最后的 k 个元素， 然后再旋转 前面的 n - k 个元素，最后整体旋转
     def rotate(self, nums, k):
         n = len(nums)
         k = k % n
-        def swap(l, r):
-            while l < r:
-                nums[l], nums[r] = nums[r], nums[l]
-                l += 1
-                r -= 1
+        def swap(start, end):
+            while start < end:
+                nums[start], nums[end] = nums[end], nums[start]
+                start += 1
+                end -= 1
         swap(n - k, n - 1)
         swap(0, n - k - 1)
         swap(0, n - 1)
@@ -17,3 +16,4 @@ k = 5
 t1 = Solution()
 newNums = t1.rotate(nums, k)
 print(newNums)
+
